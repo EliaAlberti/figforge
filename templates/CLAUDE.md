@@ -9,11 +9,11 @@
 ## 1. Project Identity
 
 - **Project Name:** [YOUR PROJECT NAME]
-- **Description:** [WHAT ARE YOU DESIGNING]
-- **Design System:** [NAME OF YOUR DESIGN SYSTEM, IF ANY]
+- **Description:** [WHAT ARE YOU DESIGNING — app UI, marketing assets, prototypes, etc.]
 - **Figma File(s):** [URLS TO YOUR MAIN FIGMA FILES]
-- **FigJam Board(s):** [URLS TO YOUR FIGJAM BOARDS, IF ANY]
-- **Repository:** [GITHUB URL]
+- **Design System:** [NAME OF YOUR DESIGN SYSTEM, IF ANY — optional]
+- **FigJam Board(s):** [URLS TO YOUR FIGJAM BOARDS — optional]
+- **Repository:** [GITHUB URL — optional]
 
 ---
 

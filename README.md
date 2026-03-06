@@ -426,15 +426,15 @@ figjam-diagramming:
 ---
 
 <details>
-<summary><strong>figma-componentize</strong> — Convert flat designs into reusable components</summary>
+<summary><strong>figma-componentize</strong> — Convert existing designs into reusable components</summary>
 
 ### What it does
 
-Analyses a Figma frame to identify repeated and reusable elements, plans a bottom-up component hierarchy (atoms > molecules > organisms), cross-references existing components to avoid duplication, creates components with proper variant properties, and optionally exports elements as SVG.
+Analyses any Figma frame to identify repeated and reusable elements, plans a bottom-up component hierarchy (atoms > molecules > organisms), cross-references existing components to avoid duplication, creates components with proper variant properties, and optionally exports elements as SVG.
 
 ### When to use
 
-- Converting flat/one-off designs into reusable components
+- Converting one-off designs into reusable components
 - Building a component library from existing screens
 - Extracting repeated patterns into component sets with variants
 - Exporting design elements as SVG assets
@@ -495,11 +495,11 @@ figma-componentize:
 
 ### What it does
 
-Screenshots the frame as ground truth, analyses child positions to detect layout patterns (vertical stacks, horizontal rows, grids, wrap), matches spacing to design tokens, then applies auto-layout inside-out — deepest children first. Overlapping elements are preserved as absolute-positioned. Before/after screenshot comparison ensures zero visual regression.
+Screenshots the frame as ground truth, analyses child positions to detect layout patterns (vertical stacks, horizontal rows, grids, wrap), matches spacing to design tokens, then applies auto-layout inside-out — deepest children first. Overlapping elements are preserved with absolute positioning. Before/after screenshot comparison ensures zero visual regression.
 
 ### When to use
 
-- Retrofitting auto-layout onto flat/absolute-positioned designs
+- Retrofitting auto-layout onto absolute-positioned designs
 - Making static mockups responsive
 - Cleaning up frame structure for developer handoff
 - Preparing designs for component extraction

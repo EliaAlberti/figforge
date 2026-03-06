@@ -1,12 +1,12 @@
 ---
 name: figma-componentize
-description: "Create fully-fledged components and component sets from any Figma frame's design elements, with optional SVG export. Use when converting flat designs into reusable component libraries."
+description: "Create fully-fledged components and component sets from any Figma frame's design elements, with optional SVG export. Use when converting existing designs into reusable component libraries."
 ---
 
 # Figma Componentize
 
 ## When to Use
-- Converting flat/one-off designs into reusable components
+- Converting one-off designs into reusable components
 - Building a component library from existing screens
 - Extracting repeated patterns into component sets with variants
 - Exporting design elements as SVG assets

@@ -37,14 +37,17 @@ This creates:
 
 ### 4. Edit CLAUDE.md
 
-Fill in the Project Identity section:
+Fill in the Project Identity section with your project details:
 ```markdown
-- **Project Name:** My App Design System
-- **Description:** Design system for My App
-- **Design System:** My App DS
+- **Project Name:** My App
+- **Description:** Mobile app UI design and prototyping
+- **Design System:** My App DS (if applicable)
 - **Figma File(s):** https://figma.com/file/abc123/My-App
-- **Repository:** https://github.com/myuser/my-app-design
+- **FigJam Board(s):** https://figma.com/board/xyz789/Planning (if applicable)
+- **Repository:** https://github.com/myuser/my-app (if applicable)
 ```
+
+Only the **Project Name**, **Description**, and **Figma File(s)** are required. The rest are optional — FigForge works for any kind of Figma project: app design, marketing assets, illustrations, prototypes, presentations, or design systems.
 
 ## Daily Workflows
 

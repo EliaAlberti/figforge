@@ -1,12 +1,12 @@
 ---
 name: figma-auto-layout
-description: "Intelligently apply auto-layout to existing Figma frame contents where applicable, following best design practices. Use when retrofitting structure onto flat designs."
+description: "Intelligently apply auto-layout to existing Figma frame contents where applicable, following best design practices. Use when retrofitting structure onto existing designs."
 ---
 
 # Figma Auto-Layout
 
 ## When to Use
-- Retrofitting auto-layout onto flat/absolute-positioned designs
+- Retrofitting auto-layout onto absolute-positioned designs
 - Making static mockups responsive
 - Cleaning up frame structure for developer handoff
 - Preparing designs for component extraction
