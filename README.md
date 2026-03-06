@@ -26,7 +26,7 @@ A unified capability layer for Claude Code's native Agent Teams, purpose-built f
 │  Teammate     │     │  Skills           │     │  Persistence      │
 │  Templates    │     │  (auto-loaded)    │     │  (Beads + Sprint) │
 │               │     │                   │     │                   │
-│  Lead reads   │     │  6 Figma skills   │     │  Beads CLI (bd)   │
+│  Lead reads   │     │  8 Figma skills   │     │  Beads CLI (bd)   │
 │  these files  │     │                   │     │  Beads-Viewer(bv) │
 │  and uses as  │     │                   │     │  .sprint/ dir     │
 │  spawn prompts│     │                   │     │  verify.sh        │
@@ -90,14 +90,93 @@ Then say: **"Spin up the Figma team"**
 
 ## Skills
 
-| Skill | Purpose |
-|-------|---------|
-| figma-spec-extraction | Extract precise design specs from frames |
-| figma-layer-organization | Rename and clean up Figma layers |
-| figma-variable-management | Create, audit, and organise design tokens |
-| figma-component-audit | Audit component library for consistency |
-| figma-design-handoff | Prepare files for developer handoff |
-| figjam-diagramming | Create diagrams and boards in FigJam |
+FigForge ships with 8 skills that can be invoked standalone or by any teammate.
+
+### figma-spec-extraction
+
+Extract precise design specifications from Figma frames — measurements, colours, typography, spacing, and component properties.
+
+**Example:**
+> "Extract the full spec for the Login screen in my Figma file — I need exact padding, font sizes, colours, and which tokens are used."
+
+The skill reads the frame's node tree at full depth, extracts every dimension, maps values to design tokens, and outputs a structured spec sheet ready for implementation.
+
+---
+
+### figma-layer-organization
+
+Rename, reorganise, and clean up Figma layers to follow naming conventions and prepare files for handoff.
+
+**Example:**
+> "Clean up all the layer names on the Dashboard page — there are a bunch of 'Frame 47' and 'Rectangle 12' names that need proper labels."
+
+The skill audits every layer against your naming convention (e.g., `[Type]/[Category]/[Name]—[State]`), generates a rename table, and executes in Local Mode or outputs the plan in Remote Mode.
+
+---
+
+### figma-variable-management
+
+Create, audit, rename, and organise Figma design variables and tokens. Build or maintain a full token system.
+
+**Example:**
+> "Audit all design variables in this file and tell me which ones don't follow the primitive > semantic > component hierarchy."
+
+The skill reads all variables, categorises them by type, identifies naming violations and orphaned tokens, and proposes a reorganisation plan with proper hierarchy.
+
+---
+
+### figma-component-audit
+
+Audit your Figma component library for consistency, completeness, and proper variant setup.
+
+**Example:**
+> "Check all my components — are the variants set up correctly? Are there any using hardcoded colours instead of tokens?"
+
+The skill lists every component, checks naming conventions, validates variant properties are consistent across similar components, flags hardcoded values, and outputs an audit report with actionable findings.
+
+---
+
+### figma-design-handoff
+
+Prepare Figma files for developer handoff — the "preflight checklist" that orchestrates multiple other skills.
+
+**Example:**
+> "This design is ready for dev. Run the full handoff prep — naming, tokens, specs, assets, everything."
+
+The skill runs a complete checklist: layer naming compliance, token documentation, component audit, spec extraction for each screen, asset inventory, and state/variant documentation. Outputs a handoff package.
+
+---
+
+### figjam-diagramming
+
+Create diagrams, flowcharts, wireframes, and workshop boards in FigJam.
+
+**Example:**
+> "Create a user journey flowchart in FigJam for our onboarding flow: sign up > verify email > choose plan > setup workspace > invite team."
+
+The skill creates the diagram directly in FigJam (Local Mode) with proper shapes, connectors, and labels, or generates a Mermaid/text representation in Remote Mode. Supports flowcharts, architecture diagrams, wireframes, and workshop boards.
+
+---
+
+### figma-componentize
+
+Convert flat designs into fully-fledged, reusable components and component sets, with optional SVG export.
+
+**Example:**
+> "Look at this Product Card frame — there are 6 variations of it across the file. Turn it into a proper component set with size and state variants, and export the icon elements as SVG."
+
+The skill analyses the frame to identify repeated elements, plans a bottom-up component hierarchy (atoms > molecules > organisms), cross-references existing components to avoid duplication, creates components with proper variant properties, and optionally exports elements as SVG. In Remote Mode, it outputs a detailed componentization plan.
+
+---
+
+### figma-auto-layout
+
+Intelligently apply auto-layout to existing Figma frame contents where applicable, turning static mockups into responsive, structured designs.
+
+**Example:**
+> "This landing page was designed with absolute positioning. Apply auto-layout everywhere it makes sense so it's responsive and clean for handoff."
+
+The skill screenshots the frame as ground truth, analyses child positions to detect vertical stacks, horizontal rows, grids, and wrap layouts, matches spacing to design tokens (rounding within 2px tolerance), then applies auto-layout inside-out — deepest children first. Overlapping elements are preserved as absolute-positioned. A before/after screenshot comparison ensures zero visual regression. In Remote Mode, it outputs a full auto-layout plan with node IDs and recommended properties.
 
 ## Documentation
 
