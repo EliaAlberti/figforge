@@ -100,6 +100,7 @@ These are optional — you'll discover when they're useful over time:
 | Design Audit | "Figma audit" | inspector + architect | Read-only analysis of a file |
 | Design System Sprint | "design system sprint" | architect + organizer + builder | Establishing/overhauling tokens and conventions |
 | Spec Extraction | "extract specs" | inspector + architect | Preparing handoff docs for developers |
+| Prototype Sprint | "create prototype" | inspector + prototyper | Wiring up interactive prototypes for user testing |
 
 ### Delegation Protocol
 

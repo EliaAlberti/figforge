@@ -84,6 +84,25 @@ This spawns inspector + architect for handoff preparation:
 - Inspector extracts precise measurements from each screen
 - Architect documents token usage and component relationships
 
+### Prototype Sprint
+
+**Trigger:** "Create prototype" or "Prototype sprint"
+
+This spawns inspector + prototyper for creating interactive prototypes:
+- Inspector reads the screen structure and identifies interactive elements
+- Prototyper proposes a flow map, creates prototype connections, and outputs a shareable link
+
+**Example:**
+```
+You: Create a prototype for this design: [Figma URL]
+Lead: [spawns inspector + prototyper]
+Prototyper: I found 8 screens and 23 interactive elements. Here's the proposed flow...
+You: Looks good, go ahead
+Prototyper: Done — prototype link: figma.com/proto/...
+```
+
+The prototype link works immediately on usertesting.com, Maze, UserZoom, and any browser.
+
 ### Full Figma Team
 
 **Trigger:** "Spin up the Figma team"

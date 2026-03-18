@@ -82,6 +82,22 @@ These are smaller teams for specific needs:
 - "Document all tokens used in the Dashboard"
 - "Create a handoff doc for the Settings redesign"
 
+### Prototype Sprint
+
+**Trigger:** "create prototype" or "prototype sprint"
+
+| Teammate | Role |
+|----------|------|
+| figma-inspector | Reads screen structure and identifies interactive elements |
+| figma-prototyper | Creates prototype connections, transitions, and flows |
+
+**When to use:** Wiring up interactive prototypes for user testing after screens have been designed. Add figma-builder if new screens are needed.
+
+**Example tasks:**
+- "Create a clickable prototype for the onboarding flow"
+- "Wire up all the navigation for the app and give me a shareable link"
+- "Add prototype connections for the checkout flow — I need it for a Maze test"
+
 ---
 
 ## Creating Your Own Patterns

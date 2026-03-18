@@ -2,8 +2,8 @@
   <img src="https://img.shields.io/badge/Claude%20Code-Optimized-5A67D8?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHoiLz48L3N2Zz4=&logoColor=white" alt="Claude Code Optimized" />
   <img src="https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge" alt="Version 1.1.0" />
   <img src="https://img.shields.io/badge/Figma-Ecosystem-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma Ecosystem" />
-  <img src="https://img.shields.io/badge/Skills-8%20Available-blue?style=for-the-badge" alt="8 Skills" />
-  <img src="https://img.shields.io/badge/Teammates-5-orange?style=for-the-badge" alt="5 Teammates" />
+  <img src="https://img.shields.io/badge/Skills-9%20Available-blue?style=for-the-badge" alt="9 Skills" />
+  <img src="https://img.shields.io/badge/Teammates-6-orange?style=for-the-badge" alt="6 Teammates" />
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="MIT License" />
 </p>
 
@@ -56,7 +56,7 @@
 │  Teammate     │     │  Skills           │     │  Persistence      │
 │  Templates    │     │  (auto-loaded)    │     │  (Beads + Sprint) │
 │               │     │                   │     │                   │
-│  Lead reads   │     │  8 Figma skills   │     │  Beads CLI (bd)   │
+│  Lead reads   │     │  9 Figma skills   │     │  Beads CLI (bd)   │
 │  these files  │     │                   │     │  Beads-Viewer(bv) │
 │  and uses as  │     │                   │     │  .sprint/ dir     │
 │  spawn prompts│     │                   │     │  verify.sh        │
@@ -111,6 +111,7 @@ Then say: **"Spin up the Figma team"**
 | Design Audit | "Figma audit" | inspector, architect |
 | Design System Sprint | "design system sprint" | architect, organizer, builder |
 | Spec Extraction | "extract specs" | inspector, architect |
+| Prototype Sprint | "create prototype" | inspector, prototyper |
 
 ---
 
@@ -122,13 +123,14 @@ Then say: **"Spin up the Figma team"**
 | **figma-architect** | Plans design systems, token hierarchies, naming conventions | Remote + Local |
 | **figma-organizer** | Renames layers, enforces conventions, cleans up files | Remote (plans) + Local (executes) |
 | **figma-builder** | Creates elements, components, layouts in Figma | Local only |
+| **figma-prototyper** | Creates interactive prototype flows, transitions, and connections | Local only |
 | **figjam-diagrammer** | Creates diagrams, flowcharts, boards in FigJam | Remote + Local |
 
 ---
 
 ## Skills
 
-FigForge ships with **8 skills** that can be invoked standalone or by any teammate. Each skill works in Local Mode (executes directly) and falls back to structured plans in Remote Mode.
+FigForge ships with **9 skills** that can be invoked standalone or by any teammate. Each skill works in Local Mode (executes directly) and falls back to structured plans in Remote Mode.
 
 ---
 
@@ -426,6 +428,67 @@ figjam-diagramming:
 ---
 
 <details>
+<summary><strong>figma-prototype</strong> — Create interactive clickable prototypes for user testing</summary>
+
+### What it does
+
+Programmatically wires up Figma frames with prototype connections, transitions, and flows using the Plugin API via `figma_execute`. Analyses screens to identify interactive elements, proposes a flow map, creates all connections, sets flow starting points, and outputs a shareable prototype link ready for user testing platforms.
+
+### When to use
+
+- Creating interactive prototypes from existing screen designs
+- Wiring up user flows for user testing (usertesting.com, Maze, etc.)
+- Adding navigation, overlays, and transitions between frames
+- Automating prototype creation after the builder finishes screens
+
+### Example
+
+```
+You: "Here's my app design: figma.com/design/abc123/MyApp
+      Create a prototype for user testing."
+
+figma-prototype:
+├── Analyses page structure via figma_get_file_data (depth 5+)
+├── Screenshots for visual reference
+├── Identifies 6 screens: Login, Dashboard, Profile, Settings, Onboarding 1-2
+├── Detects 18 interactive elements (buttons, tabs, icons, cards)
+├── Checks for existing prototype connections: none found
+│
+├── Proposes flow map:
+│   | # | Source Screen | Element          | Target Screen | Transition            |
+│   |---|-------------|------------------|--------------|----------------------|
+│   | 1 | Login       | "Sign In" button | Dashboard    | Smart Animate, 300ms |
+│   | 2 | Dashboard   | Tab: Profile     | Profile      | Smart Animate, 200ms |
+│   | 3 | Dashboard   | Settings icon    | Settings     | Slide Up, 250ms      |
+│   | 4 | Settings    | Close button     | —            | Close overlay         |
+│   | 5 | All screens | Back arrow       | —            | Back navigation       |
+│   | 6 | Onboarding 1| "Next" button   | Onboarding 2 | Slide Left, 300ms    |
+│   "Does this flow look right?"
+│
+├── You confirm → creates all connections via figma_execute:
+│   └── 18 reactions created via setReactionsAsync
+│
+├── Sets flow starting point: Login → "Main Flow"
+│
+├── Screenshots prototype for verification
+│   └── ✓ All connections working
+│
+└── Output:
+    Prototype ready:
+    https://www.figma.com/proto/abc123/MyApp?starting-point-node-id=1:234
+
+    Set file sharing to "Anyone with the link can view" for testing.
+
+    Platform tips:
+    - usertesting.com: Disable hotspot hints in prototype settings
+    - Maze: Use native Figma import for auto-sync + heatmaps
+```
+
+</details>
+
+---
+
+<details>
 <summary><strong>figma-componentize</strong> — Convert existing designs into reusable components</summary>
 
 ### What it does
@@ -587,15 +650,17 @@ figforge/
 │   │   ├── figma-inspector.md
 │   │   ├── figma-architect.md
 │   │   ├── figma-organizer.md
-│   │   └── figma-builder.md
+│   │   ├── figma-builder.md
+│   │   └── figma-prototyper.md
 │   └── figjam/             # 1 FigJam teammate
 │       └── figjam-diagrammer.md
-├── skills/                 # 8 self-contained skills
+├── skills/                 # 9 self-contained skills
 │   ├── figma-spec-extraction/
 │   ├── figma-layer-organization/
 │   ├── figma-variable-management/
 │   ├── figma-component-audit/
 │   ├── figma-design-handoff/
+│   ├── figma-prototype/
 │   ├── figma-componentize/
 │   ├── figma-auto-layout/
 │   └── figjam-diagramming/
