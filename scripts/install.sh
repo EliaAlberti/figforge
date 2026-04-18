@@ -42,8 +42,8 @@ echo ""
 # Install agents
 echo -e "${BOLD}Installing agents...${NC}"
 mkdir -p "$HOME/.claude/agents"
-cp agents/*.md "$HOME/.claude/agents/"
-echo -e "${GREEN}✓${NC} $(ls agents/*.md | wc -l | tr -d ' ') agents installed"
+cp plugin/agents/*.md "$HOME/.claude/agents/"
+echo -e "${GREEN}✓${NC} $(ls plugin/agents/*.md | wc -l | tr -d ' ') agents installed"
 
 # Clean up old teammates directory (pre-2.0 FigForge installations)
 if [ -d "$HOME/.claude/teammates" ]; then
@@ -55,7 +55,7 @@ echo ""
 
 # Install skills
 echo -e "${BOLD}Installing skills...${NC}"
-for skill_dir in skills/*/; do
+for skill_dir in plugin/skills/*/; do
     skill_name=$(basename "$skill_dir")
     mkdir -p "$HOME/.claude/skills/$skill_name"
     cp "$skill_dir"SKILL.md "$HOME/.claude/skills/$skill_name/"

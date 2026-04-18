@@ -664,28 +664,31 @@ figforge/
 │
 ├── templates/              # CLAUDE.md template + verify.sh + sprint config
 ├── .claude-plugin/
-│   ├── plugin.json         # Plugin manifest
-│   └── marketplace.json    # Marketplace metadata
-├── agents/                 # 6 specialist agents
-│   ├── figma-inspector.md
-│   ├── figma-architect.md
-│   ├── figma-organizer.md
-│   ├── figma-builder.md
-│   ├── figma-prototyper.md
-│   └── figjam-diagrammer.md
-├── skills/                 # 10 self-contained skills
-│   ├── figma-spec-extraction/
-│   ├── figma-layer-organization/
-│   ├── figma-variable-management/
-│   ├── figma-component-audit/
-│   ├── figma-design-handoff/
-│   ├── figma-prototype/
-│   ├── figma-componentize/
-│   ├── figma-auto-layout/
-│   ├── figjam-diagramming/
-│   └── init/
+│   └── marketplace.json    # Marketplace catalog
+├── plugin/                 # The FigForge plugin
+│   ├── .claude-plugin/
+│   │   └── plugin.json     # Plugin manifest
+│   ├── agents/             # 6 specialist agents
+│   │   ├── figma-inspector.md
+│   │   ├── figma-architect.md
+│   │   ├── figma-organizer.md
+│   │   ├── figma-builder.md
+│   │   ├── figma-prototyper.md
+│   │   └── figjam-diagrammer.md
+│   ├── skills/             # 10 self-contained skills
+│   │   ├── figma-spec-extraction/
+│   │   ├── figma-layer-organization/
+│   │   ├── figma-variable-management/
+│   │   ├── figma-component-audit/
+│   │   ├── figma-design-handoff/
+│   │   ├── figma-prototype/
+│   │   ├── figma-componentize/
+│   │   ├── figma-auto-layout/
+│   │   ├── figjam-diagramming/
+│   │   └── init/
+│   └── templates/          # CLAUDE.md template + verify.sh
 ├── persistence/            # Beads + sprint + task sizing docs
-├── scripts/                # install.sh + init-project.sh
+├── scripts/                # install.sh (manual install path)
 └── docs/                   # Documentation files
 ```
 

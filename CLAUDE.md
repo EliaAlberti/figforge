@@ -7,17 +7,19 @@
 ## Repository Structure
 
 ```
-figforge/
+figforge/                           ← marketplace root
 ├── .claude-plugin/
-│   ├── plugin.json        ← Plugin manifest (v2.0.0)
-│   └── marketplace.json   ← Marketplace metadata for private distribution
-├── agents/                ← 6 specialist agents with YAML frontmatter
-├── skills/                ← 10 self-contained skills (incl. init)
-├── templates/             ← Sprint config + verify.sh (legacy template ref)
-├── persistence/           ← Beads + sprint + task sizing docs
-├── scripts/               ← install.sh (manual install path)
-├── docs/                  ← Documentation files
-└── data/                  ← Research reports
+│   └── marketplace.json            ← Marketplace catalog (lists the plugin)
+├── plugin/                         ← The FigForge plugin itself
+│   ├── .claude-plugin/
+│   │   └── plugin.json             ← Plugin manifest (v2.0.0)
+│   ├── agents/                     ← 6 specialist agents (YAML frontmatter)
+│   ├── skills/                     ← 10 self-contained skills (incl. init)
+│   └── templates/                  ← Sprint config + verify.sh
+├── persistence/                    ← Beads + sprint + task sizing docs
+├── scripts/                        ← install.sh (manual install path)
+├── docs/                           ← Documentation files
+└── data/                           ← Research reports
 ```
 
 ## Distribution Paths
