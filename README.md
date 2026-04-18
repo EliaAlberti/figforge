@@ -1,9 +1,10 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Claude%20Code-Optimized-5A67D8?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHoiLz48L3N2Zz4=&logoColor=white" alt="Claude Code Optimized" />
-  <img src="https://img.shields.io/badge/Version-1.1.0-green?style=for-the-badge" alt="Version 1.1.0" />
+  <img src="https://img.shields.io/badge/Version-2.0.0-green?style=for-the-badge" alt="Version 2.0.0" />
   <img src="https://img.shields.io/badge/Figma-Ecosystem-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma Ecosystem" />
-  <img src="https://img.shields.io/badge/Skills-9%20Available-blue?style=for-the-badge" alt="9 Skills" />
-  <img src="https://img.shields.io/badge/Teammates-6-orange?style=for-the-badge" alt="6 Teammates" />
+  <img src="https://img.shields.io/badge/Plugin-Ready-9146FF?style=for-the-badge" alt="Plugin Ready" />
+  <img src="https://img.shields.io/badge/Skills-10%20Available-blue?style=for-the-badge" alt="10 Skills" />
+  <img src="https://img.shields.io/badge/Agents-6-orange?style=for-the-badge" alt="6 Agents" />
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="MIT License" />
 </p>
 
@@ -23,7 +24,7 @@
   <a href="#architecture">Architecture</a> •
   <a href="#quick-start">Quick Start</a> •
   <a href="#team-patterns">Teams</a> •
-  <a href="#teammates">Teammates</a> •
+  <a href="#agents">Agents</a> •
   <a href="#skills">Skills</a> •
   <a href="#documentation">Docs</a>
 </p>
@@ -56,7 +57,7 @@
 │  Teammate     │     │  Skills           │     │  Persistence      │
 │  Templates    │     │  (auto-loaded)    │     │  (Beads + Sprint) │
 │               │     │                   │     │                   │
-│  Lead reads   │     │  9 Figma skills   │     │  Beads CLI (bd)   │
+│  Lead reads   │     │  10 Figma skills  │     │  Beads CLI (bd)   │
 │  these files  │     │                   │     │  Beads-Viewer(bv) │
 │  and uses as  │     │                   │     │  .sprint/ dir     │
 │  spawn prompts│     │                   │     │  verify.sh        │
@@ -77,28 +78,45 @@
 
 ## Quick Start
 
-### 1. Install globally (one time)
+FigForge can be installed as a **Claude Code plugin** (recommended) or via the **manual script** (for development/customisation).
+
+### Option A — Install as a Plugin (Recommended)
 
 ```bash
+# In Claude Code:
+/plugin marketplace add EliaAlberti/figforge
+/plugin install figforge
+```
+
+Then in any project:
+```bash
+# In Claude Code:
+/figforge:init
+```
+
+The `init` skill appends FigForge configuration to your project's `CLAUDE.md` (or creates one if none exists) — it never overwrites.
+
+### Option B — Manual Install
+
+```bash
+# One-time global install
 git clone https://github.com/EliaAlberti/figforge.git
 cd figforge
 bash scripts/install.sh
-```
 
-### 2. Initialise a project
-
-```bash
+# Per-project setup (in Claude Code)
 cd your-figma-project
-bash path/to/figforge/scripts/init-project.sh
-```
-
-### 3. Spin up a team
-
-```bash
 claude
+/figforge:init
 ```
 
-Then say: **"Spin up the Figma team"**
+### Spin up a team
+
+Once initialised, in Claude Code say:
+
+**"Spin up the Figma team"**
+
+Or use any of the [team patterns](#team-patterns) below.
 
 ---
 
@@ -115,10 +133,10 @@ Then say: **"Spin up the Figma team"**
 
 ---
 
-## Teammates
+## Agents
 
-| Teammate | Role | Modes |
-|----------|------|-------|
+| Agent | Role | Modes |
+|-------|------|-------|
 | **figma-inspector** | Extracts design specs, measurements, tokens | Remote + Local |
 | **figma-architect** | Plans design systems, token hierarchies, naming conventions | Remote + Local |
 | **figma-organizer** | Renames layers, enforces conventions, cleans up files | Remote (plans) + Local (executes) |
@@ -130,7 +148,7 @@ Then say: **"Spin up the Figma team"**
 
 ## Skills
 
-FigForge ships with **9 skills** that can be invoked standalone or by any teammate. Each skill works in Local Mode (executes directly) and falls back to structured plans in Remote Mode.
+FigForge ships with **10 skills** that can be invoked standalone or by any agent. Each skill works in Local Mode (executes directly) and falls back to structured plans in Remote Mode.
 
 ---
 
@@ -645,16 +663,17 @@ figforge/
 ├── README.md               # This file
 │
 ├── templates/              # CLAUDE.md template + verify.sh + sprint config
-├── teammates/
-│   ├── design/             # 4 Figma Design teammates
-│   │   ├── figma-inspector.md
-│   │   ├── figma-architect.md
-│   │   ├── figma-organizer.md
-│   │   ├── figma-builder.md
-│   │   └── figma-prototyper.md
-│   └── figjam/             # 1 FigJam teammate
-│       └── figjam-diagrammer.md
-├── skills/                 # 9 self-contained skills
+├── .claude-plugin/
+│   ├── plugin.json         # Plugin manifest
+│   └── marketplace.json    # Marketplace metadata
+├── agents/                 # 6 specialist agents
+│   ├── figma-inspector.md
+│   ├── figma-architect.md
+│   ├── figma-organizer.md
+│   ├── figma-builder.md
+│   ├── figma-prototyper.md
+│   └── figjam-diagrammer.md
+├── skills/                 # 10 self-contained skills
 │   ├── figma-spec-extraction/
 │   ├── figma-layer-organization/
 │   ├── figma-variable-management/
@@ -663,7 +682,8 @@ figforge/
 │   ├── figma-prototype/
 │   ├── figma-componentize/
 │   ├── figma-auto-layout/
-│   └── figjam-diagramming/
+│   ├── figjam-diagramming/
+│   └── init/
 ├── persistence/            # Beads + sprint + task sizing docs
 ├── scripts/                # install.sh + init-project.sh
 └── docs/                   # Documentation files

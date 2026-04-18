@@ -1,0 +1,20 @@
+{
+  "name": "figforge",
+  "owner": {
+    "name": "Elia Alberti",
+    "email": "eliaalberti@gmail.com",
+    "url": "https://github.com/EliaAlberti"
+  },
+  "description": "FigForge — AI agent framework for Figma design workflows",
+  "plugins": [
+    {
+      "name": "figforge",
+      "source": ".",
+      "description": "6 specialist agents + 10 skills for design, prototyping, componentisation, auto-layout, and design system workflows on Figma and FigJam",
+      "version": "2.0.0",
+      "category": "design",
+      "keywords": ["figma", "figjam", "design", "prototyping", "design-system", "agents"],
+      "strict": false
+    }
+  ]
+}

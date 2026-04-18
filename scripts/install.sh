@@ -39,16 +39,17 @@ echo -e "${GREEN}✓${NC} Agent Teams enabled"
 
 echo ""
 
-# Install teammates
-echo -e "${BOLD}Installing Figma Design teammates...${NC}"
-mkdir -p "$HOME/.claude/teammates/design"
-cp teammates/design/*.md "$HOME/.claude/teammates/design/"
-echo -e "${GREEN}✓${NC} $(ls teammates/design/*.md | wc -l | tr -d ' ') design teammates installed"
+# Install agents
+echo -e "${BOLD}Installing agents...${NC}"
+mkdir -p "$HOME/.claude/agents"
+cp agents/*.md "$HOME/.claude/agents/"
+echo -e "${GREEN}✓${NC} $(ls agents/*.md | wc -l | tr -d ' ') agents installed"
 
-echo -e "${BOLD}Installing FigJam teammates...${NC}"
-mkdir -p "$HOME/.claude/teammates/figjam"
-cp teammates/figjam/*.md "$HOME/.claude/teammates/figjam/"
-echo -e "${GREEN}✓${NC} $(ls teammates/figjam/*.md | wc -l | tr -d ' ') FigJam teammates installed"
+# Clean up old teammates directory (pre-2.0 FigForge installations)
+if [ -d "$HOME/.claude/teammates" ]; then
+    rm -rf "$HOME/.claude/teammates"
+    echo -e "${GREEN}✓${NC} Removed legacy ~/.claude/teammates/ (pre-2.0 structure)"
+fi
 
 echo ""
 
@@ -78,7 +79,11 @@ echo -e "${GREEN}${BOLD}FigForge installed successfully!${NC}"
 echo ""
 echo -e "Next steps:"
 echo -e "  1. cd into your Figma project directory"
-echo -e "  2. Run: bash $(dirname "$0")/init-project.sh"
-echo -e "  3. Open Claude Code: claude"
+echo -e "  2. Open Claude Code: claude"
+echo -e "  3. Run: /figforge:init (to configure the project)"
 echo -e "  4. Say: \"spin up the Figma team\""
+echo ""
+echo -e "${CYAN}Tip:${NC} For easier installation, install as a plugin instead:"
+echo -e "  /plugin marketplace add EliaAlberti/figforge"
+echo -e "  /plugin install figforge"
 echo ""
