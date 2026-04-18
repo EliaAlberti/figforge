@@ -706,12 +706,11 @@ FigForge stands on the shoulders of excellent open-source projects. Huge thanks 
 | Project | Creator | Contribution |
 |---------|---------|--------------|
 | **[figma-console-mcp](https://github.com/southleft/figma-console-mcp)** | [@southleft](https://github.com/southleft) | The MCP server that powers **every single Figma operation** in FigForge. Without it, none of this framework would exist. Provides 59+ tools across Local and Remote modes, including the `figma_execute` escape hatch that enables advanced workflows like auto-layout retrofitting, componentisation, and prototype creation. |
-| **[Claude Code](https://code.claude.com)** | Anthropic | The CLI and plugin system that hosts FigForge |
 | **[Beads](https://github.com/steveyegge/beads)** | Steve Yegge | Git-backed task tracking used for cross-session persistence |
 
 ### Special thanks to `@southleft`
 
-The `figma-console-mcp` project deserves special recognition. It's a remarkable piece of infrastructure that bridges Claude Code and Figma with both a Remote (REST API) mode and a Local (Desktop Bridge plugin) mode — covering virtually every Figma Plugin API capability. **If you use FigForge, please go star and support [@southleft/figma-console-mcp](https://github.com/southleft/figma-console-mcp)**. They built the hard part.
+The `figma-console-mcp` project deserves special recognition. It's a remarkable piece of infrastructure that bridges Claude Code and Figma with both a Remote (REST API) mode and a Local (Desktop Bridge plugin) mode, covering virtually every Figma Plugin API capability. **If you use FigForge, please go star and support [@southleft/figma-console-mcp](https://github.com/southleft/figma-console-mcp)**. They built the hard part.
 
 ---
 
